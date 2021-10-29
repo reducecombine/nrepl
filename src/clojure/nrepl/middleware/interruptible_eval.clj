@@ -131,8 +131,7 @@
                                    :root-ex (str (class (clojure.main/root-cause e)))}]
                          (t/send transport (response-for msg resp))))))
           (finally
-            (when (misc/java-8?)
-              (.setContextClassLoader (Thread/currentThread) ctxcl))
+            (.setContextClassLoader (Thread/currentThread) ctxcl)
             (.flush err)
             (.flush out)))))))
 
